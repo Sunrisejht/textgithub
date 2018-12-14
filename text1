@@ -1,0 +1,254 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#define n1 100
+#define m1 6
+#define N 100
+char d[16], b[6];
+int a, i,j,t=0,c=0,n=4;
+
+struct  mmp
+{
+
+    char shangpinhao[10];
+    char mingcheng[10];
+    char jiage [10];
+    char changjia[10];
+    char riqi[12];
+    int xiancunliang;
+
+} ku[N];
+
+
+int main()
+
+{
+  system("color 79");
+    void gongneng();
+    char q;
+    int count=0;
+    printf("***********欢迎使用商品信息管理系统*******************************\n");
+	printf("*                                                                *\n");
+	printf("*                ----------------------                          *\n");
+	printf("*                |   Powered By jht    |                         *\n");
+	printf("*                -----------------------                         *\n");
+	printf("*                                                                *\n");
+    printf("*               请输入密码H进入商品信息管理程序；                *\n");
+    printf("******************************************************************\n");
+    while(~scanf(" %c",&q))
+    {
+        if(q=='H')
+        {
+            printf("密码验证成功，请等待加载\n");
+            gongneng();
+        }
+        else
+        {
+            printf("请重新输入密码(提示；输错三次程序将自动关闭)\n");
+            count++;
+        }
+        if(count==3)
+            break;
+    }
+}
+
+
+void gongneng() //定义功能函数
+
+{
+    void shuru(void); //声明输入函数
+    void tianjia(void); //声明添加函数
+    void chaxun(void); //声明查询函数
+    void shanchu(void); //声明删除函数
+    void tuichu(void);//声明退出函数
+    void xianshi(void);// 声明显示函数
+    char d;
+    system("cls");
+    shuru(); //调用输入函数
+
+    printf("\t输入商品信息请输入: 1 \n\t显示商品信息请输入: 2 \n\t查找商品信息请输入: 3 \n\t增加商品信息请输入: 4 \n\t删除商品信息请输入：5 \n\t退出程序请输入：6\n");
+
+    for(i=0;; i++)
+    {
+        printf("请输入要操作的选项：");
+        scanf("%s",&d);
+        switch(d)
+        {
+            case '1':
+                shuru();
+                break; //调用商品输入函数
+            case '2':
+                xianshi();
+                break; //调用商品信息显示函数
+                chaxun();
+                break; //调用商品信息查询函数
+            case '4':
+                tianjia();
+                break; //调用商品信息添加函数
+            case '5':
+                shanchu();
+                break; //调用商品信息删除函数
+            case '6':
+                tuichu();//调用商品信息退出函数
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+
+void shuru(void) //商品信息输入函数
+
+{
+    int x=1;
+    printf("\t\t\t **********************\n");
+    printf("\t\t\t 欢迎进入商品信息输入系统!!\n");
+    printf("\t\t\t **********************\n");
+    printf("\t\t商品号、名称、价格、生产厂家、生产日期、现存量\n");
+    for(i=0; i<n; i++)
+    {
+        printf("输入商品编号%d:",x++);
+
+            scanf("%s%s%s%s%s %d",ku[i].shangpinhao,ku[i].mingcheng,ku[i].jiage,ku[i].changjia,ku[i].riqi,&ku[i].xiancunliang);
+
+    }
+    printf("\n");
+    printf("商品号、名称、价格、生产厂家、生产日期、现存量\n");
+    for(i=0; i<n; i++)
+    {
+
+            printf("%s %s %s %s %s %d\n",ku[i].shangpinhao,ku[i].mingcheng,ku[i].jiage,ku[i].changjia,ku[i].riqi,ku[i].xiancunliang);
+
+        printf("\n");
+    }
+}
+
+void tianjia(void) //商品信息添加函数
+
+{
+    int d,t,z;
+    printf("\t\t\t**********************\n");
+    printf("\t\t\t欢迎进入商品信息添加系统!!\n");
+    printf("\t\t\t**********************\n");
+    for(d=1;; d++)
+    {
+        printf("\n是否进行添加，是请按任意键，“否” 请输入0\n");
+        scanf("%d",&t);
+        if(t!=0)
+        {
+        printf("请输入要添加的第%d个商品信息:\n",d);
+        printf("商品号、名称、价格、生产厂家、生产日期、现存量\n");
+        z=n++;
+
+            scanf("%s %s %s %s %s %d",ku[z].shangpinhao,ku[z].mingcheng,ku[z].jiage,ku[z].changjia,ku[z].riqi,&ku[z].xiancunliang);
+            printf("你添加的信息依次是%s %s %s %s %s %d\n",ku[z].shangpinhao,ku[z].mingcheng,ku[z].jiage,ku[z].changjia,ku[z].riqi,ku[z].xiancunliang);
+        }
+        else break ;
+    }
+    system("cls");
+    printf("\t输入商品信息请输入: 1 \n\t显示商品信息请输入: 2 \n\t查找商品信息请输入: 3 \n\t增加商品信息请输入: 4 \n\t删除商品信息请输入：5 \n\t退出程序请输入：6\n");
+}
+
+void chaxun(void) //商品信息查询函数
+
+{
+    char y[16];
+    int d,t,z;
+    printf("\t\t\t**********************\n");
+    printf("\t\t\t欢迎进入信息查询系统!!\n");
+    printf("\t\t\t**********************\n");
+    for(d=1;; d++)
+    {
+        printf("\n是否进行查询，是请按任意键“否” 请输入0\n");
+        scanf("%d",&t);
+        if(t!=0)
+        {
+            printf("请输入要查询的商品号:");
+            scanf("%s",&y);
+            printf("商品号、名称、价格、生产厂家、生产日期、现存量\n");
+            for(i=0; z=i,i<n1; i++)
+            {
+                if(strcmp(y,ku[i].shangpinhao)==0)
+                {
+                    printf("%s %s %s %s %s %d",ku[i].shangpinhao,ku[i].mingcheng,ku[i].jiage,ku[i].changjia,ku[i].riqi,ku[i].xiancunliang);
+                    break;
+                }
+            }
+            if(z==n) printf("没有此商品号信息\n");
+        }
+        else break ;
+    }
+    system("cls");
+    printf("\t输入商品信息请输入: 1 \n\t显示商品信息请输入: 2 \n\t查找商品信息请输入: 3 \n\t增加商品信息请输入: 4 \n\t删除商品信息请输入：5 \n\t退出程序请输入：6\n");
+}
+
+void shanchu(void) //商品信息删除函数
+
+{
+    char y[16];
+    char y1[16];
+    int d,x,z;
+    printf("\t\t\t**********************\n");
+    printf("\t\t\t欢迎进入商品信息删除系统!!\n");
+    printf("\t\t\t**********************\n");
+    for(d=1;; d++)
+    {
+        printf("\n是否进行删除，是请按任意键，“否” 请输入0\n");
+        scanf("%d",&t);
+        if(t!=0)
+        {
+        printf("请输入要删除的商品号：");
+        scanf("%s",&y);
+        printf("请再次输入要删除的商品号：");
+        scanf("%s",&y1);
+        printf("商品号、名称、价格、生产厂家、生产日期、现存量\n");
+        if(strcmp(y,y1)==0)
+        {
+            for(i=0; i<n; i++)
+            {
+                if(strcmp(y,ku[i].shangpinhao)==0)
+                {
+                    z=i;
+                    printf("要删除的商品信息是\n");
+                    printf("%s %s %s %s %s %d",ku[i].shangpinhao,ku[i].mingcheng,ku[i].jiage,ku[i].changjia,ku[i].riqi,ku[i].xiancunliang);
+                    t++;
+                }
+                printf("\n");
+            }
+            for(i=z; i<n-1; i++)
+            {
+
+                    ku[i]=ku[i+1];
+
+            }
+            if(z==n) printf("没有此商品号信息\n");
+        }
+        printf("商品号、名称、价格、生产厂家、生产日期、现存量\n");
+        for(i=0; i<n-t; i++)
+        {
+            printf("%s %s %s %s %s %d",ku[i].shangpinhao,ku[i].mingcheng,ku[i].jiage,ku[i].changjia,ku[i].riqi,ku[i].xiancunliang);
+            printf("\n");
+        }
+        }
+        else break ;
+    }
+    system("cls");
+    printf("\t输入商品信息请输入: 1 \n\t显示商品信息请输入: 2 \n\t查找商品信息请输入: 3 \n\t增加商品信息请输入: 4 \n\t删除商品信息请输入：5 \n\t退出程序请输入：6\n");
+}
+
+
+void tuichu(void)//商品信息系统退出函数
+{
+    exit(0);
+}
+
+void xianshi(void)//商品信息显示函数
+{
+    printf("商品号、名称、价格、生产厂家、生产日期、现存量\n");
+    for(i=0; i<n; i++)
+    {
+        printf("%s %s %s %s %s %d",ku[i].shangpinhao,ku[i].mingcheng,ku[i].jiage,ku[i].changjia,ku[i].riqi,ku[i].xiancunliang);
+        printf("\n");
+    }
+}
